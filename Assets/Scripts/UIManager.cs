@@ -38,6 +38,7 @@ public class UIManager : MonoBehaviour
     [Header("MenuInGame")]
     public GameObject MenuInGame;
     public TextMeshProUGUI PlayTime;
+    public TextMeshProUGUI Text_StartCount;    
 
     [Header("MenuPause")]
     public GameObject MenuPuase;
@@ -51,7 +52,7 @@ public class UIManager : MonoBehaviour
     public GameObject MainStage;
 
 
-
+          
     //메뉴이동===========================
     public void ToSelectMode()
     {
@@ -76,13 +77,16 @@ public class UIManager : MonoBehaviour
         MenuStart.SetActive(false);
         MenuInGame.SetActive(true);
         MainStage.SetActive(true);
-        //여기서 초기화 설정
+   
+      
     }
     
     public void OpenPause()
     {
         Time.timeScale = 0;
         MenuPuase.SetActive(true);
+        Text_StartCount.gameObject.SetActive(false);
+     
     }    
 
 
@@ -123,19 +127,52 @@ public class UIManager : MonoBehaviour
     //메뉴이동===========================
 
     //기능관련===========================
+
+
+    //이어하기
     public void Resume()
     {
-        //카운트 시작
+        //카운트 시작    
         Time.timeScale = 1f;
         MenuPuase.SetActive(false);
+        Text_StartCount.gameObject.SetActive(true);      
+    
     }
     
+    //재시작
     public void ReStart()
-    {
-        //설정 초기화
+    {       
         Time.timeScale = 1f;
-        MenuPuase.SetActive(false);
-    }
+        MenuPuase.SetActive(false);      
+        PlayTime.text = " ";
+        Text_StartCount.gameObject.SetActive(true);
+
+
+
+    }   
+
     //기능관련===========================
 
+
+
+
+    //UI표시 ============================
+
+    public void SetStartCount(float Time)
+    {
+        Text_StartCount.text = string.Format("{0}", Mathf.Ceil(Time));
+        if (Time <= 0)
+        {
+            Text_StartCount.gameObject.SetActive(false);
+        }
+    }
+
+    public void SetPlayTime(float Time)
+    {
+        PlayTime.text = string.Format("{0:N2} 초", Time);
+    }
+    //UI표시 ============================
+
+ 
+  
 }
