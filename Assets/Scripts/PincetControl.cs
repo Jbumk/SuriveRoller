@@ -12,11 +12,14 @@ public class PincetControl : MonoBehaviour
     private int MoveCode =0;
     private bool DownChk = false;
     private bool DoMove = false;
+    private Vector3 OriginVec;
 
     private void Awake()
     {
+        OriginVec = Pincet.transform.position;
         MoveCode = Random.Range(0, MovePoint.Length);
     }
+
     private void FixedUpdate()
     {       
         if (GameManager.instance.CountChk() <= 0)
@@ -54,6 +57,14 @@ public class PincetControl : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void ResetPincet()
+    {
+        DoMove = true;
+        DownChk = false;
+        MoveCode = Random.Range(0, MovePoint.Length);
+        Pincet.transform.position = OriginVec;
     }
 
 }

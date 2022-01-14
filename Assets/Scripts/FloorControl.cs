@@ -6,8 +6,7 @@ public class FloorControl : MonoBehaviour
 {
     public GameObject Floor;
     public float SpinSpeed=9f;
-    public static Vector3 FloorVec = Vector3.zero;
-   
+    public static Vector3 FloorVec = Vector3.zero; 
 
 
 
@@ -26,7 +25,6 @@ public class FloorControl : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftArrow))
             {
                 FloorVec += (Vector3.forward * SpinSpeed * Time.deltaTime);
-
             }
 
             if (Input.GetKey(KeyCode.RightArrow))

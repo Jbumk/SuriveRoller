@@ -56,6 +56,7 @@ public class UIManager : MonoBehaviour
     //메뉴이동===========================
     public void ToSelectMode()
     {
+        
         MenuStart.SetActive(true);
         MenuMain.SetActive(false);
     }
@@ -74,6 +75,7 @@ public class UIManager : MonoBehaviour
 
     public void ToVsCom()
     {
+        Time.timeScale = 1f;
         MenuStart.SetActive(false);
         MenuInGame.SetActive(true);
         MainStage.SetActive(true);
@@ -86,6 +88,7 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0;
         MenuPuase.SetActive(true);
         Text_StartCount.gameObject.SetActive(false);
+        SoundManager.instance.BGMStop();
      
     }    
 
@@ -98,6 +101,9 @@ public class UIManager : MonoBehaviour
     public void CloseSet()
     {        
         MenuSet.SetActive(false);
+        SaveManager.instance.SaveData.BGMVolum = BGM.value;
+        SaveManager.instance.SaveData.EffectVolum = Effect.value;
+        SaveManager.instance.DataSave();
     }
 
     public void OpenResult()
@@ -117,6 +123,7 @@ public class UIManager : MonoBehaviour
         MenuPuase.SetActive(false);
         MenuInGame.SetActive(false);
         MenuRank.SetActive(false);
+        MenuStart.SetActive(false);
     }
 
     public void Quit()
@@ -143,12 +150,10 @@ public class UIManager : MonoBehaviour
     public void ReStart()
     {       
         Time.timeScale = 1f;
-        MenuPuase.SetActive(false);      
+        MenuPuase.SetActive(false);
+        MenuResult.SetActive(false);
         PlayTime.text = " ";
         Text_StartCount.gameObject.SetActive(true);
-
-
-
     }   
 
     //기능관련===========================
@@ -170,6 +175,23 @@ public class UIManager : MonoBehaviour
     public void SetPlayTime(float Time)
     {
         PlayTime.text = string.Format("{0:N2} 초", Time);
+    }
+
+    public void SetResult(float Time)
+    {
+        Res_PlayTime.text = string.Format("{0:N2} 초", Time);
+    }
+
+    public void SetRank(int Rank)
+    {
+        if (Rank > 0)
+        {
+            Res_Rank.text = string.Format("{0} 위", Rank);
+        }
+        else
+        {
+            Res_Rank.text = string.Format("랭크아웃");
+        }
     }
     //UI표시 ============================
 
