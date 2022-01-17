@@ -28,9 +28,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject Pincet;
     private Vector3 PincetOriginVec;
-
     public GameObject Stage;
-    private Vector3 StageOringVec = Vector3.zero;
+    
 
     //Control
     private bool isStart = false;
@@ -66,8 +65,8 @@ public class GameManager : MonoBehaviour
     public void GameReset()
     {
         Player.transform.position = PlayerOriginVec;        
-        Stage.transform.rotation = Quaternion.Euler(Vector3.zero);
-        FloorControl.ResetStage();
+        Stage.transform.rotation =FloorControl.FloorQuat;
+        //FloorControl.ResetStage();
         PlayTime = 0;
         
     

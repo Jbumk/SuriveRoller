@@ -1,48 +1,78 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class FloorControl : MonoBehaviour
+public class FloorControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    [Header("Floor")]
     public GameObject Floor;
-    public float SpinSpeed=9f;
-    public static Vector3 FloorVec = Vector3.zero; 
+    public float SpinSpeed=9f; 
+    public static Quaternion FloorQuat;
+
+
+    [Header("Stick")]
+    public RectTransform Stick;
+    public RectTransform Rect;
+    private float Range = 20f;
+    Vector2 inputDir;
+
+    private void Awake()
+    {
+        FloorQuat = Floor.transform.rotation;
+    }
 
 
 
+    public void OnBeginDrag(PointerEventData eventData)
+    {
 
+        inputDir = (eventData.position - eventData.pressPosition)/10;
+        if(inputDir.magnitude < Range)
+        {
+            Stick.anchoredPosition = inputDir;
+        }
+        else
+        {
+            inputDir = inputDir.normalized * Range;
+            Stick.anchoredPosition = inputDir;
+        }
+        
+       
+    }
 
+    public void OnDrag(PointerEventData eventData)
+    {
+       
+        inputDir = (eventData.position - eventData.pressPosition)/10;
+        Debug.Log(inputDir);
+        if (inputDir.magnitude < Range)
+        {
+            Stick.anchoredPosition = inputDir;
+        }
+        else
+        {
+            inputDir = inputDir.normalized * Range;
+            Stick.anchoredPosition = inputDir;
+        }
+      
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        inputDir = Vector2.zero;
+        Stick.anchoredPosition = Vector2.zero;
+        
+    }
 
     private void FixedUpdate()
     {
         if (GameManager.instance.CountChk() <= 0)
         {
-            if (Input.GetKey(KeyCode.UpArrow))
-            {
-                FloorVec += (Vector3.right * SpinSpeed * Time.deltaTime);
-            }
-
-            if (Input.GetKey(KeyCode.LeftArrow))
-            {
-                FloorVec += (Vector3.forward * SpinSpeed * Time.deltaTime);
-            }
-
-            if (Input.GetKey(KeyCode.RightArrow))
-            {
-                FloorVec -= (Vector3.forward * SpinSpeed * Time.deltaTime);
-            }
-
-            if (Input.GetKey(KeyCode.DownArrow))
-            {
-                FloorVec -= (Vector3.right * SpinSpeed * Time.deltaTime);
-            }
-            Floor.transform.rotation = Quaternion.Euler(FloorVec);
+            Floor.transform.Rotate(inputDir*Time.deltaTime,Space.Self);
         }
-              
+
+
     }
 
-    public static void ResetStage()
-    {
-        FloorVec = Vector3.zero;
-    }
 }
