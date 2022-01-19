@@ -7,23 +7,15 @@ public class FloorControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 {
     [Header("Floor")]
     public GameObject Floor;
-    public float SpinSpeed=9f; 
-    public static Quaternion FloorQuat;
-
+    public float SpinSpeed=9f;  
+    public static Vector3 FloorVec=Vector3.zero;
 
     [Header("Stick")]
-    public RectTransform Stick;
-    public RectTransform Rect;
+    public RectTransform Stick;   
     private float Range = 20f;
     Vector2 inputDir;
 
-    private void Awake()
-    {
-        FloorQuat = Floor.transform.rotation;
-    }
-
-
-
+ 
     public void OnBeginDrag(PointerEventData eventData)
     {
 
@@ -44,8 +36,7 @@ public class FloorControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public void OnDrag(PointerEventData eventData)
     {
        
-        inputDir = (eventData.position - eventData.pressPosition)/10;
-        Debug.Log(inputDir);
+        inputDir = (eventData.position - eventData.pressPosition)/10;       
         if (inputDir.magnitude < Range)
         {
             Stick.anchoredPosition = inputDir;
@@ -66,13 +57,31 @@ public class FloorControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     }
 
     private void FixedUpdate()
-    {
+    {      
         if (GameManager.instance.CountChk() <= 0)
-        {
-            Floor.transform.Rotate(inputDir*Time.deltaTime,Space.Self);
+        {          
+            //컨트롤 방식이 JoyStick(D-pad)방식인지 체크
+            if (UIManager.instance.MethodPadChk())
+            {                
+                FloorVec.x += inputDir.normalized.y * UIManager.instance.XReverseChk();
+                FloorVec.z -= inputDir.normalized.x * UIManager.instance.YReverseChk();
+            }
+            else
+            {              
+                FloorVec.x += Input.acceleration.y * UIManager.instance.XReverseChk();
+                FloorVec.z -= Input.acceleration.x * UIManager.instance.YReverseChk();
+            }
+            FloorVec.x = Mathf.Clamp(FloorVec.x, -40f, 40f);
+            FloorVec.z = Mathf.Clamp(FloorVec.z, -40f, 40f);
+            Floor.transform.rotation = Quaternion.Euler(FloorVec);
         }
 
 
+    }
+
+    public void HorizontalControl()
+    {
+        
     }
 
 }

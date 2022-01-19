@@ -25,9 +25,9 @@ public class SoundManager : MonoBehaviour
     public AudioSource Effect;
     public Slider Slide_Effect;
 
-    private void Awake()
+    private void Start()
     {
-        SaveManager.instance.DataLoad();
+        
         Slide_BGM.value = SaveManager.instance.SaveData.BGMVolum;
         Slide_Effect.value = SaveManager.instance.SaveData.EffectVolum;
     }

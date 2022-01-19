@@ -26,8 +26,8 @@ public class GameManager : MonoBehaviour
     private Vector3 PlayerOriginVec;
     private Rigidbody rigid;
 
-    public GameObject Pincet;
-    private Vector3 PincetOriginVec;
+  
+  
     public GameObject Stage;
     
 
@@ -39,9 +39,10 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        SaveManager.instance.DataLoad();
         PlayerOriginVec = Player.transform.position;
         rigid = Player.GetComponent<Rigidbody>();
-        // PincetOriginVec = Pincet.transform.position;
+      
     }
 
     private void Update()
@@ -64,11 +65,10 @@ public class GameManager : MonoBehaviour
 
     public void GameReset()
     {
-        Player.transform.position = PlayerOriginVec;        
-        Stage.transform.rotation =FloorControl.FloorQuat;
-        //FloorControl.ResetStage();
-        PlayTime = 0;
-        
+        Player.transform.position = PlayerOriginVec;
+        FloorControl.FloorVec = Vector3.zero;
+        Stage.transform.rotation = Quaternion.Euler(Vector3.zero);      
+        PlayTime = 0;        
     
     }
 

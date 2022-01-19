@@ -27,10 +27,18 @@ public class UIManager : MonoBehaviour
     public GameObject MenuStart;
 
     [Header("MenuSet")]
-    public GameObject MenuSet;
-    public ToggleGroup ControlMethod;
+    public GameObject MenuSet;   
     public Slider BGM;
     public Slider Effect;
+    public Toggle tglJoyStick;
+    public Toggle tglHorizontal;
+    private bool MethodPad = true;
+    public Toggle tglXReverse;
+    public Toggle tglYReverse;
+    private int XReverse = 1;
+    private int YReverse = 1;
+    
+   
 
     [Header("MenuRank")]
     public GameObject MenuRank;   
@@ -38,7 +46,8 @@ public class UIManager : MonoBehaviour
     [Header("MenuInGame")]
     public GameObject MenuInGame;
     public TextMeshProUGUI PlayTime;
-    public TextMeshProUGUI Text_StartCount;    
+    public TextMeshProUGUI Text_StartCount;
+    public GameObject JoyPad;
 
     [Header("MenuPause")]
     public GameObject MenuPuase;
@@ -52,7 +61,62 @@ public class UIManager : MonoBehaviour
     public GameObject MainStage;
 
 
-          
+   
+
+    private void Start()
+    {       
+        if (SaveManager.instance.SaveData.JoyStickControl)
+        {          
+            tglJoyStick.isOn = true;
+            tglHorizontal.isOn = false;
+            MethodPad = true;
+            JoyPad.SetActive(true);
+            
+        }
+        else
+        {           
+            tglJoyStick.isOn = false;
+            tglHorizontal.isOn = true;
+            MethodPad = false;
+            JoyPad.SetActive(false);
+        }
+
+        if (SaveManager.instance.SaveData.XReverse)
+        {
+            tglXReverse.isOn = true;
+            XReverse = -1;
+        }
+        else
+        {
+            tglXReverse.isOn = false;
+            XReverse = 1;
+        }
+
+        if (SaveManager.instance.SaveData.YReverse)
+        {
+            tglYReverse.isOn = true;
+            YReverse = -1;
+        }
+        else
+        {
+            tglYReverse.isOn = false;
+            YReverse = 1;
+        }
+
+        tglXReverse.onValueChanged.AddListener(delegate
+        {
+            Debug.Log("X값 변동");
+            XReverse *= -1;
+            
+        });
+        tglYReverse.onValueChanged.AddListener(delegate
+        {
+            Debug.Log("Y값 변동");
+            YReverse *= -1;
+        });
+    }
+
+
     //메뉴이동===========================
     public void ToSelectMode()
     {
@@ -101,8 +165,46 @@ public class UIManager : MonoBehaviour
     public void CloseSet()
     {        
         MenuSet.SetActive(false);
+        //컨트롤 방법 저장
+        if (tglJoyStick.isOn)
+        {
+            Debug.Log("조이스틱 이용");
+            MethodPad = true;
+            JoyPad.SetActive(true);
+            SaveManager.instance.SaveData.JoyStickControl = true;
+        }
+
+        if(tglHorizontal.isOn)
+        {
+            Debug.Log("수평값 이용");
+            MethodPad = false;
+            JoyPad.SetActive(false);
+            SaveManager.instance.SaveData.JoyStickControl = false;
+        }
+
+        //X반전 여부저장
+        if (tglXReverse.isOn)
+        {
+            SaveManager.instance.SaveData.XReverse = true;
+        }
+        else
+        {
+            SaveManager.instance.SaveData.XReverse = false;
+        }
+        //Y반전 여부 저장
+        if (tglYReverse.isOn)
+        {
+            SaveManager.instance.SaveData.YReverse = true;
+        }
+        else
+        {
+            SaveManager.instance.SaveData.YReverse = false;
+        }
+       
+      
         SaveManager.instance.SaveData.BGMVolum = BGM.value;
         SaveManager.instance.SaveData.EffectVolum = Effect.value;
+        
         SaveManager.instance.DataSave();
     }
 
@@ -159,6 +261,25 @@ public class UIManager : MonoBehaviour
     //기능관련===========================
 
 
+
+
+    //리턴값
+    public bool MethodPadChk()
+    {
+        return MethodPad;
+    }
+    
+    public int XReverseChk()
+    {
+        return XReverse;
+    }
+    
+    public int YReverseChk()
+    {
+        return YReverse;
+    }
+
+    //리턴값
 
 
     //UI표시 ============================
