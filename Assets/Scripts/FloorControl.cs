@@ -9,6 +9,7 @@ public class FloorControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public GameObject Floor;
     public float SpinSpeed=9f;  
     public static Vector3 FloorVec=Vector3.zero;
+    private Vector2 AccelSet;
 
     [Header("Stick")]
     public RectTransform Stick;   
@@ -68,8 +69,8 @@ public class FloorControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             }
             else
             {              
-                FloorVec.x += Input.acceleration.y * UIManager.instance.XReverseChk();
-                FloorVec.z -= Input.acceleration.x * UIManager.instance.YReverseChk();
+                FloorVec.x -= (UIManager.instance.AccelChk().y-Input.acceleration.y) * UIManager.instance.XReverseChk();
+                FloorVec.z += (UIManager.instance.AccelChk().x-Input.acceleration.x) * UIManager.instance.YReverseChk();
             }
             FloorVec.x = Mathf.Clamp(FloorVec.x, -40f, 40f);
             FloorVec.z = Mathf.Clamp(FloorVec.z, -40f, 40f);
@@ -77,11 +78,6 @@ public class FloorControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         }
 
 
-    }
-
-    public void HorizontalControl()
-    {
-        
-    }
+    }  
 
 }

@@ -11,6 +11,7 @@ public class SaveData
     public bool JoyStickControl;
     public bool XReverse;
     public bool YReverse;
+    public Vector2 AccelSet;
     // public double[] Rank = new double[] { };
     public List<double> Rank = new List<double>();
 }

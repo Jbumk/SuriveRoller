@@ -37,6 +37,7 @@ public class UIManager : MonoBehaviour
     public Toggle tglYReverse;
     private int XReverse = 1;
     private int YReverse = 1;
+    private Vector2 Accel;
     
    
 
@@ -65,6 +66,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {       
+        //컨트롤 방법 설정
         if (SaveManager.instance.SaveData.JoyStickControl)
         {          
             tglJoyStick.isOn = true;
@@ -81,6 +83,7 @@ public class UIManager : MonoBehaviour
             JoyPad.SetActive(false);
         }
 
+        //X반전 여부 설정
         if (SaveManager.instance.SaveData.XReverse)
         {
             tglXReverse.isOn = true;
@@ -92,6 +95,7 @@ public class UIManager : MonoBehaviour
             XReverse = 1;
         }
 
+        //Y반전 여부 설정
         if (SaveManager.instance.SaveData.YReverse)
         {
             tglYReverse.isOn = true;
@@ -103,6 +107,7 @@ public class UIManager : MonoBehaviour
             YReverse = 1;
         }
 
+        //X,Y반전 설정 감지
         tglXReverse.onValueChanged.AddListener(delegate
         {
             Debug.Log("X값 변동");
@@ -114,6 +119,11 @@ public class UIManager : MonoBehaviour
             Debug.Log("Y값 변동");
             YReverse *= -1;
         });
+
+        //기울기감지 초기값 불러오기
+        Accel.x = SaveManager.instance.SaveData.AccelSet.x;
+        Accel.y = SaveManager.instance.SaveData.AccelSet.y;
+        
     }
 
 
@@ -258,6 +268,16 @@ public class UIManager : MonoBehaviour
         Text_StartCount.gameObject.SetActive(true);
     }   
 
+
+    //기울기 초기값조절
+    public void AccelerationSet()
+    {
+        Accel.x = Input.acceleration.x;
+        Accel.y = Input.acceleration.y;
+        SaveManager.instance.SaveData.AccelSet.x = Accel.x;
+        SaveManager.instance.SaveData.AccelSet.y = Accel.y;
+    }
+
     //기능관련===========================
 
 
@@ -277,6 +297,11 @@ public class UIManager : MonoBehaviour
     public int YReverseChk()
     {
         return YReverse;
+    }
+
+    public Vector2 AccelChk()
+    {
+        return Accel;
     }
 
     //리턴값

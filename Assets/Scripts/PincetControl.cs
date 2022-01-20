@@ -14,6 +14,11 @@ public class PincetControl : MonoBehaviour
     private bool DoMove = false;
     private Vector3 OriginVec;
 
+    //바닥 경고용
+    private RaycastHit hit;
+    private int laymask =1 << 8;
+    private Renderer rend;
+
     private void Awake()
     {
         OriginVec = Pincet.transform.position;
@@ -21,7 +26,8 @@ public class PincetControl : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {       
+    {
+       
         if (GameManager.instance.CountChk() <= 0)
         {
             if (DoMove)
@@ -39,23 +45,38 @@ public class PincetControl : MonoBehaviour
             else
             {
                 if (DownChk)
-                {
-                    Pincet.transform.position = Vector3.MoveTowards(Pincet.transform.position, GrabPoint[MoveCode].transform.position, DownSpeed * Time.deltaTime);
+                {                
+                    Debug.DrawRay(transform.position, transform.up * -30,Color.red);
+                    Pincet.transform.position = Vector3.MoveTowards(Pincet.transform.position, GrabPoint[MoveCode].transform.position, DownSpeed * Time.deltaTime);                   
+                    if (Physics.Raycast(transform.position, transform.up * -1,out hit, Mathf.Infinity, laymask))
+                    {
+                        Debug.Log("감지");
+                        rend = hit.transform.GetComponent<Renderer>();
+                        rend.material.color = Color.red;
+                    }
+
                     if (Vector3.Distance(Pincet.transform.position, GrabPoint[MoveCode].transform.position) <= 0.1)
                     {
                         DownChk = false;
                     }
                 }
                 else
-                {
+                {                   
                     Pincet.transform.position = Vector3.MoveTowards(Pincet.transform.position, MovePoint[MoveCode].transform.position, DownSpeed * Time.deltaTime);
                     if (Vector3.Distance(Pincet.transform.position, MovePoint[MoveCode].transform.position) <= 0.1)
                     {
                         MoveCode = Random.Range(0, MovePoint.Length);
                         DoMove = true;
                     }
+                    if (rend != null)
+                    {
+                        rend.material.color = Color.white;
+                    }
+
                 }
             }
+
+            
         }
     }
 
@@ -65,6 +86,11 @@ public class PincetControl : MonoBehaviour
         DownChk = false;
         MoveCode = Random.Range(0, MovePoint.Length);
         Pincet.transform.position = OriginVec;
+        if (rend != null)
+        {
+            rend.material.color = Color.white;
+            rend = null;
+        }
     }
 
 }
