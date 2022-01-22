@@ -115,5 +115,15 @@ public class GameManager : MonoBehaviour
     {
         return StartCount;
     }
+
+    public float PlayTimechk()
+    {
+        return PlayTime;
+    }
+
+    public bool StartChk()
+    {
+        return isStart;
+    }
   
 }

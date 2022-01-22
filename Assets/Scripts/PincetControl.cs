@@ -49,8 +49,7 @@ public class PincetControl : MonoBehaviour
                     Debug.DrawRay(transform.position, transform.up * -30,Color.red);
                     Pincet.transform.position = Vector3.MoveTowards(Pincet.transform.position, GrabPoint[MoveCode].transform.position, DownSpeed * Time.deltaTime);                   
                     if (Physics.Raycast(transform.position, transform.up * -1,out hit, Mathf.Infinity, laymask))
-                    {
-                        Debug.Log("감지");
+                    {                     
                         rend = hit.transform.GetComponent<Renderer>();
                         rend.material.color = Color.red;
                     }
