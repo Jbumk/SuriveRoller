@@ -19,9 +19,9 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Console
+  m_Title: Scene
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 875, y: 542}
+  m_MinSize: {x: 875, y: 592}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -46,7 +46,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 997
-  m_MinSize: {x: 875, y: 542}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_UseTopView: 1
   m_TopViewHeight: 30
@@ -118,10 +118,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 679, y: 492}
+  m_MinSize: {x: 678, y: 492}
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 1
-  controlID: 166
+  controlID: 32
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -143,10 +143,10 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 947
-  m_MinSize: {x: 679, y: 492}
+  m_MinSize: {x: 678, y: 492}
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
-  controlID: 167
+  controlID: 33
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -168,10 +168,10 @@ MonoBehaviour:
     y: 0
     width: 1462
     height: 947
-  m_MinSize: {x: 403, y: 492}
+  m_MinSize: {x: 402, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 168
+  controlID: 44
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -193,10 +193,10 @@ MonoBehaviour:
     y: 0
     width: 1462
     height: 591
-  m_MinSize: {x: 403, y: 221}
-  m_MaxSize: {x: 8003, y: 4021}
+  m_MinSize: {x: 402, y: 221}
+  m_MaxSize: {x: 8002, y: 4021}
   vertical: 0
-  controlID: 169
+  controlID: 45
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -216,8 +216,8 @@ MonoBehaviour:
     y: 0
     width: 310
     height: 591
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -302,7 +302,7 @@ MonoBehaviour:
   m_MinSize: {x: 276, y: 192}
   m_MaxSize: {x: 4001, y: 8042}
   vertical: 1
-  controlID: 103
+  controlID: 34
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -443,7 +443,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 1150, y: 549}
+  m_TargetSize: {x: 1440, y: 2960}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -458,10 +458,10 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -575
-    m_HBaseRangeMax: 575
-    m_VBaseRangeMin: -274.5
-    m_VBaseRangeMax: 274.5
+    m_HBaseRangeMin: -720
+    m_HBaseRangeMax: 720
+    m_VBaseRangeMin: -1480
+    m_VBaseRangeMax: 1480
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -481,7 +481,7 @@ MonoBehaviour:
       y: 21
       width: 1150
       height: 549
-    m_Scale: {x: 1, y: 1}
+    m_Scale: {x: 0.18547298, y: 0.18547298}
     m_Translation: {x: 575, y: 274.5}
     m_MarginLeft: 0
     m_MarginRight: 0
@@ -489,12 +489,12 @@ MonoBehaviour:
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -575
-      y: -274.5
-      width: 1150
-      height: 549
+      x: -3100.1821
+      y: -1480
+      width: 6200.3643
+      height: 2960
     m_MinimalGUI: 1
-  m_defaultScale: 1
+  m_defaultScale: 0.18547298
   m_LastWindowPixelSize: {x: 1150, y: 570}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
@@ -529,20 +529,20 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: f6a30000
-      m_LastClickedID: 41974
-      m_ExpandedIDs: 2cbbffffa2cbffffa4cbffffa8cbffff64d3ffff98d8ffff76e2ffff38fbffff56390000663b0000c63d0000484b0000846b0000ae870000208c000016a30000f6a3000076a4000068a80000aea80000
+      m_SelectedIDs: b0b60000
+      m_LastClickedID: 0
+      m_ExpandedIDs: caa5ffff60aeffff58c8ffff5ac8ffff5ec8ffff38fbffff5a390000da390000cc3d0000a2b0000002b1000044b200001eb300006ab60000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Manager
-        m_OriginalName: Manager
+        m_Name: Main
+        m_OriginalName: Main
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 42456
+        m_UserData: -14246
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
         m_OriginalEventType: 0
@@ -591,9 +591,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 6.16794, y: 13.272074, z: 7.750199}
+    m_Target: {x: -7.2453175, y: 3.0154152, z: 12.219883}
     speed: 2
-    m_Value: {x: 6.16794, y: 13.272074, z: 7.750199}
+    m_Value: {x: -7.2453175, y: 3.0154152, z: 12.219883}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -640,20 +640,20 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.31984285, y: 0.13445722, z: -0.044958353, w: -0.93702614}
+    m_Target: {x: 0.3317969, y: -0.4903859, z: 0.2080794, w: 0.7788638}
     speed: 2
-    m_Value: {x: -0.3197761, y: 0.13442916, z: -0.04494897, w: -0.9368306}
+    m_Value: {x: 0.33202678, y: -0.4890964, z: 0.20753029, w: 0.77940625}
   m_Size:
-    m_Target: 7.856529
+    m_Target: 0.20481354
     speed: 2
-    m_Value: 7.856529
+    m_Value: 0.50481355
   m_Ortho:
     m_Target: 0
     speed: 2
     m_Value: 0
   m_CameraSettings:
-    m_Speed: 0.7006499
-    m_SpeedNormalized: 0.34999996
+    m_Speed: 0.76061994
+    m_SpeedNormalized: 0.37999997
     m_SpeedMin: 0.001
     m_SpeedMax: 2
     m_EasingEnabled: 1
@@ -755,7 +755,7 @@ MonoBehaviour:
     x: 310
     y: 73
     width: 1150
-    height: 572
+    height: 570
   m_ViewDataDictionary: {fileID: 0}
   m_SplitPaneLeftWidth: 300
 --- !u!114 &22
@@ -796,32 +796,32 @@ MonoBehaviour:
     m_SkipHidden: 1
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets/Mezanix/RealisticWoodTextures/0_0_Textures/Interior_Wood_1/Materials
     m_Globs: []
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Mezanix/RealisticWoodTextures/0_0_Textures/Interior_Wood_1/Materials
   m_LastFoldersGridSize: -1
   m_LastProjectPath: F:\Github\SuriveRoller
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: ba3f0000
-    m_LastClickedID: 16314
-    m_ExpandedIDs: 000000009a3f00009c3f0000a03f0000a23f0000a63f0000a83f00001a4100002241000000ca9a3b
+    m_SelectedIDs: 1eef0000
+    m_LastClickedID: 61214
+    m_ExpandedIDs: 00000000a23f0000a43f0000a63f0000a83f0000aa3f0000ac3f0000ae3f0000b03f000010ef000018ef00001aef000020ef000028ef000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Plugins
-      m_OriginalName: Plugins
+      m_Name: 0_0_Textures
+      m_OriginalName: 0_0_Textures
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 16308
+      m_UserData: 61210
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
       m_OriginalEventType: 0
@@ -838,7 +838,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000009a3f00009c3f00009e3f0000a03f0000a23f0000a43f0000a63f0000a83f0000
+    m_ExpandedIDs: 00000000a23f0000a43f0000a63f0000a83f0000aa3f0000ac3f0000ae3f0000b03f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

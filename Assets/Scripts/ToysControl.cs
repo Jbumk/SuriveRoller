@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class ToysControl : MonoBehaviour
 {
-    public GameObject[] SpawnPlace;
-    public GameObject[] Target;   
+    public GameObject[] SpawnPlace; 
     public double cycle=3.0;
 
     private List<int> TargetList = new List<int>();
@@ -49,10 +48,11 @@ public class ToysControl : MonoBehaviour
                 TargetNum = TargetList[TempNum];
                 TargetList.RemoveAt(TempNum);
                 obj.transform.position = SpawnPlace[TargetNum].transform.position;
-                obj.setTarget(Target[TargetNum].transform.position, TargetNum);            
-                            
+                obj.setTarget(TargetNum);
+               
+
                 Timer = 0;
-                cycle = Random.Range(3.0f, 10.0f);
+                cycle = Random.Range(3.0f, 7.0f);
             }
         }
         else

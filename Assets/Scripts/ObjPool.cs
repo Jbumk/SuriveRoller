@@ -42,7 +42,8 @@ public class ObjPool : MonoBehaviour
         if (ToysObjPool.Count > 0)
         {
             var obj = ToysObjPool.Dequeue();
-            obj.transform.SetParent(Floor.transform);
+            obj.transform.rotation = Floor.transform.rotation;
+            obj.transform.SetParent(Floor.transform);            
             obj.gameObject.SetActive(true);
 
             return obj;
@@ -50,6 +51,7 @@ public class ObjPool : MonoBehaviour
         else
         {
             var newObj = CreateNewObj();
+            newObj.transform.rotation = Floor.transform.rotation;
             newObj.transform.SetParent(Floor.transform);
             newObj.gameObject.SetActive(transform);
 

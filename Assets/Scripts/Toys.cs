@@ -6,27 +6,36 @@ public class Toys : MonoBehaviour
 {
     private Rigidbody rigid;
     private bool isfall = true;
-    private Vector3 target;
     private int targetNum;
+    private RaycastHit hit;
+    private Renderer rend;
+    private int laymask = 1 << 8;
+
     private void Awake()
     {
         rigid = GetComponent<Rigidbody>();
+    
     }
 
     private void FixedUpdate()
-    {
-        transform.localRotation = Quaternion.Euler(Vector3.zero);
-        
+    {       
         if (isfall)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, target, 3f * Time.deltaTime);                
+        {          
+            transform.Translate(Vector3.down * 5f * Time.deltaTime);            
         }
+       
 
         if (GameManager.instance.PlayTimechk()<=0)
         {
+            isfall = true;
             ToysControl.instance.ReturnTargetList(targetNum);
             targetNum = 0;
             ObjPool.instance.ReturnToys(this);
+            if (rend != null)
+            {
+                rend.material.color = Color.white;
+                rend = null;
+            }
         }
 
     }
@@ -37,6 +46,11 @@ public class Toys : MonoBehaviour
         {
             Debug.Log("바닥 닿음");
             isfall = false;
+            if (rend != null)
+            {
+                rend.material.color = Color.white;
+                rend = null;
+            }
         }
 
         //집게에 잡혔을때
@@ -69,12 +83,21 @@ public class Toys : MonoBehaviour
             ToysControl.instance.ReturnTargetList(targetNum);
             targetNum = 0;
             ObjPool.instance.ReturnToys(this);
+            if (rend != null)
+            {
+                rend.material.color = Color.white;
+                rend = null;
+            }
         }
     }
 
-    public void setTarget(Vector3 target,int targetNum)
-    {
-        this.target = target;
+    public void setTarget(int targetNum)
+    {      
+        if (Physics.Raycast(transform.position, transform.up * -1, out hit, Mathf.Infinity, laymask))
+        {
+            rend = hit.transform.GetComponent<Renderer>();
+            rend.material.color = Color.red;
+        }
         this.targetNum = targetNum;
     }
 }
