@@ -42,7 +42,8 @@ public class UIManager : MonoBehaviour
    
 
     [Header("MenuRank")]
-    public GameObject MenuRank;   
+    public GameObject MenuRank;
+    public TextMeshProUGUI[] RankTexts;
 
     [Header("MenuInGame")]
     public GameObject MenuInGame;
@@ -144,6 +145,7 @@ public class UIManager : MonoBehaviour
         MenuStart.SetActive(false);
         MenuInGame.SetActive(false);
         MenuResult.SetActive(false);
+        SetRank();
     }
     
 
@@ -276,6 +278,19 @@ public class UIManager : MonoBehaviour
         Accel.y = Input.acceleration.y;
         SaveManager.instance.SaveData.AccelSet.x = Accel.x;
         SaveManager.instance.SaveData.AccelSet.y = Accel.y;
+    }
+
+    //랭크 표시
+    public void SetRank()
+    {
+        SaveManager.instance.DataLoad();
+        SaveManager.instance.SaveData.Rank.Sort();
+        SaveManager.instance.SaveData.Rank.Reverse();
+        //SaveManager.instance.SaveData.Rank.Count
+        for (int i = 0; i < 10; i++)
+        {
+            RankTexts[i].text = string.Format("{0:N2} 초",SaveManager.instance.SaveData.Rank[i]);
+        }
     }
 
     //기능관련===========================

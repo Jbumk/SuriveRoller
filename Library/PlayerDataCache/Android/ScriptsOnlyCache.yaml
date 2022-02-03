@@ -3,10 +3,13 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - FloorControl
     - GameManager
+    - ObjPool
     - PincetControl
     - PincetHitBox
     - SaveManager
     - SoundManager
+    - Toys
+    - ToysControl
     - UIManager
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
@@ -65,6 +68,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 54
       Script: {instanceID: 0}
+    - Class: 64
+      Script: {instanceID: 0}
     - Class: 65
       Script: {instanceID: 0}
     - Class: 81
@@ -78,57 +83,63 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11830}
+      Script: {instanceID: 11810}
     - Class: 114
-      Script: {instanceID: 11948}
+      Script: {instanceID: 11812}
     - Class: 114
-      Script: {instanceID: 11996}
+      Script: {instanceID: 11834}
+    - Class: 114
+      Script: {instanceID: 11860}
+    - Class: 114
+      Script: {instanceID: 11954}
     - Class: 114
       Script: {instanceID: 12002}
     - Class: 114
-      Script: {instanceID: 12016}
+      Script: {instanceID: 12008}
     - Class: 114
-      Script: {instanceID: 12056}
+      Script: {instanceID: 12022}
     - Class: 114
-      Script: {instanceID: 12394}
+      Script: {instanceID: 12398}
     - Class: 114
-      Script: {instanceID: 12470}
+      Script: {instanceID: 12474}
     - Class: 114
-      Script: {instanceID: 12498}
+      Script: {instanceID: 12502}
     - Class: 114
-      Script: {instanceID: 12532}
+      Script: {instanceID: 12536}
     - Class: 114
-      Script: {instanceID: 12630}
+      Script: {instanceID: 12634}
     - Class: 114
-      Script: {instanceID: 12732}
+      Script: {instanceID: 12640}
     - Class: 114
-      Script: {instanceID: 12970}
+      Script: {instanceID: 12738}
     - Class: 114
-      Script: {instanceID: 13188}
+      Script: {instanceID: 13192}
     - Class: 114
-      Script: {instanceID: 13224}
+      Script: {instanceID: 13228}
     - Class: 114
-      Script: {instanceID: 13242}
+      Script: {instanceID: 13246}
     - Class: 114
-      Script: {instanceID: 13464}
+      Script: {instanceID: 13468}
     - Class: 114
-      Script: {instanceID: 13514}
+      Script: {instanceID: 13518}
     - Class: 114
-      Script: {instanceID: 13534}
+      Script: {instanceID: 13538}
     - Class: 114
-      Script: {instanceID: 13718}
+      Script: {instanceID: 13722}
     - Class: 114
-      Script: {instanceID: 13826}
+      Script: {instanceID: 13760}
     - Class: 114
-      Script: {instanceID: 13834}
+      Script: {instanceID: 13832}
     - Class: 114
-      Script: {instanceID: 13942}
+      Script: {instanceID: 13840}
     - Class: 114
-      Script: {instanceID: 13960}
+      Script: {instanceID: 13948}
     - Class: 114
-      Script: {instanceID: 13978}
+      Script: {instanceID: 13966}
     - Class: 114
-      Script: {instanceID: 14002}
+      Script: {instanceID: 13984}
+    - Class: 114
+      Script: {instanceID: 14008}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -154,6 +165,18 @@ ScriptsOnlyBuild:
   scriptHashData:
   - hash:
       serializedVersion: 2
+      Hash: a6e561615949734e9f12f9b61661f43e
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Image
+  - hash:
+      serializedVersion: 2
+      Hash: f087c23fbfa15475a0d110af46fb0496
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Button
+  - hash:
+      serializedVersion: 2
       Hash: 4bc4346a71a8df53a6b106f68ef3a190
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -164,6 +187,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_SelectionCaret
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Toys
   - hash:
       serializedVersion: 2
       Hash: 87ff43d2baf3385cba327d8f803a4ebb
@@ -248,12 +277,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
     className: TouchInputModule
-  - hash:
-      serializedVersion: 2
-      Hash: a6e561615949734e9f12f9b61661f43e
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Image
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -346,7 +369,7 @@ ScriptsOnlyBuild:
     className: Benchmark03
   - hash:
       serializedVersion: 2
-      Hash: c33bbaf42c99795976dc716f9d5ade7a
+      Hash: 0177fd019b4a9742ae7cd53eaf4a18ce
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIManager
@@ -412,6 +435,12 @@ ScriptsOnlyBuild:
     className: SoundManager
   - hash:
       serializedVersion: 2
+      Hash: 910ac1b14cc108f5df33da9f81aa871e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ToysControl
+  - hash:
+      serializedVersion: 2
       Hash: 040dd48e3a027d5424519a5fa2009df4
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -458,12 +487,6 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ChatController
-  - hash:
-      serializedVersion: 2
-      Hash: f087c23fbfa15475a0d110af46fb0496
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Button
   - hash:
       serializedVersion: 2
       Hash: c1d728126ff1918728036c59106d32b2
@@ -692,6 +715,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_StyleSheet
+  - hash:
+      serializedVersion: 2
+      Hash: 3c9cbadbfa3964952dc2cdd3a5d48c26
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ObjPool
   - hash:
       serializedVersion: 2
       Hash: e80c1450883443c68d6c2dade213536f
