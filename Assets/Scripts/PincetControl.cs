@@ -13,6 +13,7 @@ public class PincetControl : MonoBehaviour
     private bool DownChk = false;
     private bool DoMove = false;
     private Vector3 OriginVec;
+    public bool isMulti=false;
 
     //바닥 경고용
     private RaycastHit hit;
@@ -30,54 +31,74 @@ public class PincetControl : MonoBehaviour
        
         if (GameManager.instance.CountChk() <= 0)
         {
-            if (DoMove)
+            switch (isMulti)
             {
-                if (Vector3.Distance(Pincet.transform.position, MovePoint[MoveCode].transform.position) <= 0.1)
-                {                    
-                    DoMove = false;
-                    DownChk = true;
-                }
-                else
-                {
-                    Pincet.transform.position = Vector3.MoveTowards(Pincet.transform.position, MovePoint[MoveCode].transform.position, MoveSpeed * Time.deltaTime);
-                }
-            }
-            else
-            {
-                if (DownChk)
-                {                
-                    Debug.DrawRay(transform.position, transform.up * -30,Color.red);
-                    Pincet.transform.position = Vector3.MoveTowards(Pincet.transform.position, GrabPoint[MoveCode].transform.position, DownSpeed * Time.deltaTime);                   
-                    if (Physics.Raycast(transform.position, transform.up * -1,out hit, Mathf.Infinity, laymask))
-                    {                     
-                        rend = hit.transform.GetComponent<Renderer>();
-                        rend.material.color = Color.red;
+                case true:
+
+                    break;
+
+                    //솔로모드일때 알고리즘
+                case false:
+                    if (DoMove)
+                    {
+                        if (Vector3.Distance(Pincet.transform.position, MovePoint[MoveCode].transform.position) <= 0.1)
+                        {
+                            DoMove = false;
+                            DownChk = true;
+                        }
+                        else
+                        {
+                            Pincet.transform.position = Vector3.MoveTowards(Pincet.transform.position, MovePoint[MoveCode].transform.position, MoveSpeed * Time.deltaTime);
+                        }
+                    }
+                    else
+                    {
+                        if (DownChk)
+                        {
+                            Debug.DrawRay(transform.position, transform.up * -30, Color.red);
+                            Pincet.transform.position = Vector3.MoveTowards(Pincet.transform.position, GrabPoint[MoveCode].transform.position, DownSpeed * Time.deltaTime);
+                            if (Physics.Raycast(transform.position, transform.up * -1, out hit, Mathf.Infinity, laymask))
+                            {
+                                rend = hit.transform.GetComponent<Renderer>();
+                                rend.material.color = Color.red;
+                            }
+
+                            if (Vector3.Distance(Pincet.transform.position, GrabPoint[MoveCode].transform.position) <= 0.1)
+                            {
+                                DownChk = false;
+                            }
+                        }
+                        else
+                        {
+                            Pincet.transform.position = Vector3.MoveTowards(Pincet.transform.position, MovePoint[MoveCode].transform.position, DownSpeed * Time.deltaTime);
+                            if (Vector3.Distance(Pincet.transform.position, MovePoint[MoveCode].transform.position) <= 0.1)
+                            {
+                                MoveCode = Random.Range(0, MovePoint.Length);
+                                DoMove = true;
+                            }
+                            if (rend != null)
+                            {
+                                rend.material.color = Color.white;
+                            }
+
+                        }
                     }
 
-                    if (Vector3.Distance(Pincet.transform.position, GrabPoint[MoveCode].transform.position) <= 0.1)
-                    {
-                        DownChk = false;
-                    }
-                }
-                else
-                {                   
-                    Pincet.transform.position = Vector3.MoveTowards(Pincet.transform.position, MovePoint[MoveCode].transform.position, DownSpeed * Time.deltaTime);
-                    if (Vector3.Distance(Pincet.transform.position, MovePoint[MoveCode].transform.position) <= 0.1)
-                    {
-                        MoveCode = Random.Range(0, MovePoint.Length);
-                        DoMove = true;
-                    }
-                    if (rend != null)
-                    {
-                        rend.material.color = Color.white;
-                    }
-
-                }
+                    break;
             }
+
+
+
+
+
+
+
 
             
         }
     }
+
+   
 
     public void ResetPincet()
     {

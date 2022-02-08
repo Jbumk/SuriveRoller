@@ -6,7 +6,9 @@ using UnityEngine.EventSystems;
 public class FloorControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [Header("Floor")]
-    public GameObject Floor;
+    private GameObject Floor;
+    public GameObject SingleFloor;
+    public GameObject MultiFloor;  
     public float SpinSpeed=9f;  
     public static Vector3 FloorVec=Vector3.zero;
     private Vector2 AccelSet;
@@ -16,7 +18,17 @@ public class FloorControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     private float Range = 20f;
     Vector2 inputDir;
 
- 
+    //UI의 vscom 이나 Host로 참가 할때 호출해준다;
+    public void SetSingle()
+    {
+        Floor = SingleFloor;
+    }
+
+    public void SetMulti()
+    {
+        Floor = MultiFloor;
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
 
