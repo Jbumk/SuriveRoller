@@ -274,3 +274,7 @@ F:\Github\SuriveRoller\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
 F:\Github\SuriveRoller\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 F:\Github\SuriveRoller\obj\Debug\Assembly-CSharp.dll
 F:\Github\SuriveRoller\obj\Debug\Assembly-CSharp.pdb
+F:\Github\SurvRoller\SuriveRoller\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+F:\Github\SurvRoller\SuriveRoller\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
+F:\Github\SurvRoller\SuriveRoller\obj\Debug\Assembly-CSharp.dll
+F:\Github\SurvRoller\SuriveRoller\obj\Debug\Assembly-CSharp.pdb
