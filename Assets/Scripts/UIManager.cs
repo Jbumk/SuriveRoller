@@ -49,10 +49,16 @@ public class UIManager : MonoBehaviour
     public GameObject MenuInGame;
     public TextMeshProUGUI PlayTime;
     public TextMeshProUGUI Text_StartCount;
+    public GameObject BallCount;
+    public TextMeshProUGUI Text_BallCount;    
     public GameObject JoyPad;
     public GameObject JoyPadView;
     public GameObject PincetJoyPad;
     public GameObject PincetJoyPadView;
+    private Image BallJoyPanel;
+    private Image PincetJoyPanel;
+
+    private int CatchBalls = 0;
 
     [Header("MenuPause")]
     public GameObject MenuPuase;
@@ -127,7 +133,9 @@ public class UIManager : MonoBehaviour
         //기울기감지 초기값 불러오기
         Accel.x = SaveManager.instance.SaveData.AccelSet.x;
         Accel.y = SaveManager.instance.SaveData.AccelSet.y;
-        
+
+        BallJoyPanel = JoyPad.GetComponent<Image>();
+        PincetJoyPanel = PincetJoyPad.GetComponent<Image>();
     }
 
 
@@ -158,7 +166,10 @@ public class UIManager : MonoBehaviour
         MenuStart.SetActive(false);
         MenuInGame.SetActive(true);
         MainStage.SetActive(true);
-        PincetJoyPadView.SetActive(false);
+        PincetJoyPadView.SetActive(false);        
+        BallCount.SetActive(false);
+        PincetJoyPanel.enabled = false;
+        BallJoyPanel.enabled = true;
         if (MethodPad)
         {
             JoyPadView.SetActive(true);
@@ -167,6 +178,9 @@ public class UIManager : MonoBehaviour
         {
             JoyPadView.SetActive(false);
         }
+        GameManager.instance.PincetPointOff();
+        GameManager.instance.WarnPointsOn();
+        GameManager.instance.SetBallMode();
 
     }
 
@@ -178,6 +192,12 @@ public class UIManager : MonoBehaviour
         MainStage.SetActive(true);
         JoyPadView.SetActive(false);
         PincetJoyPadView.SetActive(true);
+        BallCount.SetActive(true);
+        PincetJoyPanel.enabled = true;
+        BallJoyPanel.enabled = false;
+        GameManager.instance.PincetPointOn();
+        GameManager.instance.WarnPointsOff();
+        GameManager.instance.SetPincetMode();
     }
 
     
@@ -289,6 +309,7 @@ public class UIManager : MonoBehaviour
         MenuPuase.SetActive(false);
         MenuResult.SetActive(false);
         PlayTime.text = " ";
+        CatchBalls = 0;
         Text_StartCount.gameObject.SetActive(true);
     }   
 
@@ -375,6 +396,12 @@ public class UIManager : MonoBehaviour
         {
             Res_Rank.text = string.Format("랭크아웃");
         }
+    }
+
+    public void GetBall()
+    {
+        CatchBalls += 1;
+        Text_BallCount.text = string.Format("{0} 개", CatchBalls);
     }
     //UI표시 ============================
 

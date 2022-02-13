@@ -92,6 +92,7 @@ public class PincetControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
         if (GameManager.instance.CountChk() <= 0)
         {
+            //BallMode일때 움직임
             if (isBall)
             {
                 if (DoMove)
@@ -139,6 +140,7 @@ public class PincetControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                     }
                 }
             }
+            //PincetMode일때 움직임
             else
             {
                 if (DownChk)
@@ -166,6 +168,7 @@ public class PincetControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                         if (Vector3.Distance(Pincet.transform.position, UpPoint) <= 0.1)
                         {
                             DoMove = true;
+                            GameManager.instance.PincetPointOn();
                             BtnDown.color = Color.green;
                         }
                     }
@@ -187,7 +190,10 @@ public class PincetControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         DoMove = true;
         DownChk = false;
         MoveCode = Random.Range(0, MovePoint.Length);
-       
+        if (!isBall)
+        {
+            GameManager.instance.PincetPointOn();
+        }
         if (rend != null)
         {
             rend.material.color = Color.white;
@@ -199,6 +205,7 @@ public class PincetControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         if (BtnDown.color != Color.red && GameManager.instance.CountChk() <= 0)
         {
+            GameManager.instance.PincetPointOff();
             BtnDown.color = Color.red;
             DownChk = true;
             DoMove = false;

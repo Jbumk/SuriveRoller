@@ -24,11 +24,12 @@ public class GameManager : MonoBehaviour
     [Header("Games")]
     public GameObject Player;
     private Vector3 PlayerOriginVec;
-    private Rigidbody rigid;
-
-  
-  
+    private Rigidbody rigid;  
     public GameObject Stage;
+    public GameObject WarnPoints;
+    public GameObject PincetPoint;
+    private bool BallMode = false;
+    private Vector3 SpawnVec;
     
 
     //Control
@@ -66,6 +67,7 @@ public class GameManager : MonoBehaviour
     public void GameReset()
     {
         Player.transform.position = PlayerOriginVec;
+        Player.transform.SetParent(Stage.transform);
         FloorControl.FloorVec = Vector3.zero;
         Stage.transform.rotation = Quaternion.Euler(Vector3.zero);      
         PlayTime = 0;        
@@ -110,6 +112,52 @@ public class GameManager : MonoBehaviour
         SaveManager.instance.DataSave();
     }
 
+    public void SetBallMode()
+    {
+        BallMode = true;
+    }
+
+    public void SetPincetMode()
+    {
+        BallMode = false;
+    }
+    public void PlayerSpawn()
+    {
+        SpawnVec.x = UnityEngine.Random.Range(-6.5f, 6.5f);
+        SpawnVec.y = 1f;
+        SpawnVec.z = UnityEngine.Random.Range(-2f, 11.5f);
+        Player.transform.position = SpawnVec;
+    }
+    public void PlayerGravityOn()
+    {
+        rigid.useGravity = true;
+        Player.transform.localScale=new Vector3(1f, 1f, 1f);
+    }
+    public void PlayerGravityOff()
+    {
+        rigid.velocity = Vector3.zero;
+        rigid.useGravity = false;
+    }
+
+    public void WarnPointsOn()
+    {
+        WarnPoints.SetActive(true);
+    }
+    public void WarnPointsOff()
+    {
+        WarnPoints.SetActive(false);
+    }
+
+    public void PincetPointOn()
+    {
+        PincetPoint.SetActive(true);
+    }
+
+    public void PincetPointOff()
+    {
+        PincetPoint.SetActive(false);
+    }
+
     //리턴값
     public float CountChk()
     {
@@ -124,6 +172,11 @@ public class GameManager : MonoBehaviour
     public bool StartChk()
     {
         return isStart;
+    }
+
+    public bool isBallMode()
+    {
+        return BallMode;
     }
   
 }

@@ -38,7 +38,7 @@ public class ToysControl : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.instance.CountChk() <= 0 && GameManager.instance.StartChk())
+        if (GameManager.instance.CountChk() <= 0 && GameManager.instance.StartChk() && GameManager.instance.isBallMode())
         {
             Timer += Time.deltaTime;
             if (Timer >= cycle)
