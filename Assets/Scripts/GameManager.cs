@@ -143,8 +143,8 @@ public class GameManager : MonoBehaviour
             {
                 if (CatchBalls == SaveManager.instance.SaveData.PincetRank[i])
                 {
-                    i = SaveManager.instance.SaveData.PincetRank.Count - (i + 1);
-                    if(i <= 50)
+                    i = SaveManager.instance.SaveData.PincetRank.Count -i;
+                    if(i <= 49)
                     {
                         UIManager.instance.SetRank(i);
                     }
