@@ -38,11 +38,13 @@ public class UIManager : MonoBehaviour
     private int XReverse = 1;
     private int YReverse = 1;
     private Vector2 Accel;
-    
-   
 
-    [Header("MenuRank")]
+
+
+    [Header("MenuRank")]    
     public GameObject MenuRank;
+    public GameObject BtnSelectRank;
+    public GameObject RankView;
     public TextMeshProUGUI[] RankTexts;
 
     [Header("MenuInGame")]
@@ -58,7 +60,7 @@ public class UIManager : MonoBehaviour
     private Image BallJoyPanel;
     private Image PincetJoyPanel;
 
-    private int CatchBalls = 0;
+  
 
     [Header("MenuPause")]
     public GameObject MenuPuase;
@@ -141,23 +143,25 @@ public class UIManager : MonoBehaviour
 
     //메뉴이동===========================
     public void ToSelectMode()
-    {
-        
+    {        
         MenuStart.SetActive(true);
         MenuMain.SetActive(false);
     }
 
+    //BallMode의 랭킹으로
     public void ToRank()
     {
         Time.timeScale = 1f;
         MenuRank.SetActive(true);
+        BtnSelectRank.SetActive(true);
+        
         MenuMain.SetActive(false);
         MainStage.SetActive(false);
         MenuStart.SetActive(false);
         MenuInGame.SetActive(false);
         MenuResult.SetActive(false);
-        SetRank();
     }
+  
     
 
     public void ToBallMode()
@@ -178,9 +182,7 @@ public class UIManager : MonoBehaviour
         {
             JoyPadView.SetActive(false);
         }
-        GameManager.instance.PincetPointOff();
-        GameManager.instance.WarnPointsOn();
-        GameManager.instance.SetBallMode();
+       
 
     }
 
@@ -195,9 +197,7 @@ public class UIManager : MonoBehaviour
         BallCount.SetActive(true);
         PincetJoyPanel.enabled = true;
         BallJoyPanel.enabled = false;
-        GameManager.instance.PincetPointOn();
-        GameManager.instance.WarnPointsOff();
-        GameManager.instance.SetPincetMode();
+       
     }
 
     
@@ -280,6 +280,7 @@ public class UIManager : MonoBehaviour
         MenuInGame.SetActive(false);
         MenuRank.SetActive(false);
         MenuStart.SetActive(false);
+        RankView.SetActive(false);
     }
 
     public void Quit()
@@ -309,7 +310,7 @@ public class UIManager : MonoBehaviour
         MenuPuase.SetActive(false);
         MenuResult.SetActive(false);
         PlayTime.text = " ";
-        CatchBalls = 0;
+       
         Text_StartCount.gameObject.SetActive(true);
     }   
 
@@ -324,16 +325,38 @@ public class UIManager : MonoBehaviour
     }
 
     //랭크 표시
-    public void SetRank()
+    public void SetBallRank()
     {
         SaveManager.instance.DataLoad();
-        SaveManager.instance.SaveData.Rank.Sort();
-        SaveManager.instance.SaveData.Rank.Reverse();
+        SaveManager.instance.SaveData.BallRank.Sort();
+        SaveManager.instance.SaveData.BallRank.Reverse();
         //SaveManager.instance.SaveData.Rank.Count
+        for(int i=0; i<10; i++)
+        {
+            RankTexts[i].text = string.Format("{0} 등", i + 1);
+        }
+        for (int i = 0; i < 10 && i<SaveManager.instance.SaveData.BallRank.Count; i++)
+        {
+            RankTexts[i].text = string.Format("{0:N2} 초",SaveManager.instance.SaveData.BallRank[i]);
+        }
+        RankView.SetActive(true);
+        BtnSelectRank.SetActive(false);        
+    }
+    
+    public void SetPincetRank()
+    {
+        SaveManager.instance.DataLoad();
+        SaveManager.instance.SaveData.PincetRank.Sort();
         for (int i = 0; i < 10; i++)
         {
-            RankTexts[i].text = string.Format("{0:N2} 초",SaveManager.instance.SaveData.Rank[i]);
+            RankTexts[i].text = string.Format("{0} 등", i + 1);
         }
+        for (int i = 0; i < 10 && i< SaveManager.instance.SaveData.PincetRank.Count; i++)
+        {
+            RankTexts[i].text = string.Format("{0} 개", SaveManager.instance.SaveData.PincetRank[i]);
+        }
+        RankView.SetActive(true);
+        BtnSelectRank.SetActive(false);       
     }
 
     //기능관련===========================
@@ -386,6 +409,11 @@ public class UIManager : MonoBehaviour
         Res_PlayTime.text = string.Format("{0:N2} 초", Time);
     }
 
+    public void SetResult(int Balls)
+    {
+        Res_PlayTime.text = string.Format("{0} 개", Balls);
+    }
+
     public void SetRank(int Rank)
     {
         if (Rank > 0)
@@ -398,11 +426,13 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void GetBall()
+    public void SetCatchBalls(int Balls)
     {
-        CatchBalls += 1;
-        Text_BallCount.text = string.Format("{0} 개", CatchBalls);
+        Text_BallCount.text = string.Format("{0} 개", Balls);
     }
+
+    //이거 고치기
+
     //UI표시 ============================
 
  

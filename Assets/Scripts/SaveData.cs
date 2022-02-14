@@ -13,5 +13,6 @@ public class SaveData
     public bool YReverse;
     public Vector2 AccelSet;
     // public double[] Rank = new double[] { };
-    public List<double> Rank = new List<double>();
+    public List<double> BallRank = new List<double>();
+    public List<int> PincetRank = new List<int>();
 }

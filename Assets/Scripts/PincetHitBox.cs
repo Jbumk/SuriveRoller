@@ -5,7 +5,7 @@ using UnityEngine;
 public class PincetHitBox : MonoBehaviour
 {
     private float Timer;
-    private double ReSpawnTIme = 1.0;
+    private double ReSpawnTIme = 1.1;
     public GameObject Stage;
    
 
@@ -16,18 +16,20 @@ public class PincetHitBox : MonoBehaviour
         {
             if (GameManager.instance.isBallMode())
             {
+                Debug.Log("BallMode-잡힘");
                 GameManager.instance.GameEnd();
             }
             else
             {
                 //점수 추가 후 공 재생성?
+                Debug.Log("PincetMode-잡힘");
                 col.transform.SetParent(transform);
                 GameManager.instance.PlayerGravityOff();
                 Timer += Time.deltaTime;
                 if (Timer >= ReSpawnTIme)
                 {                    
                     col.transform.SetParent(null);
-                    UIManager.instance.GetBall();
+                    GameManager.instance.GetBall();
                     GameManager.instance.PlayerGravityOn();
                     col.transform.SetParent(Stage.transform);
                     GameManager.instance.PlayerSpawn();
