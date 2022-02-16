@@ -213,7 +213,7 @@ ScriptsOnlyBuild:
     className: TMP_ScrollbarEventHandler
   - hash:
       serializedVersion: 2
-      Hash: 53b14cc899951cd732c63ad8353d41c6
+      Hash: 67e8a2c85c372a192138edf360a8d910
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -243,7 +243,7 @@ ScriptsOnlyBuild:
     className: FloorControl
   - hash:
       serializedVersion: 2
-      Hash: 1949200716a0da5fa7d720bd778ce734
+      Hash: 3a3947733c02b158546bc5c527b69098
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PincetControl
@@ -369,7 +369,7 @@ ScriptsOnlyBuild:
     className: Benchmark03
   - hash:
       serializedVersion: 2
-      Hash: 0177fd019b4a9742ae7cd53eaf4a18ce
+      Hash: 1c4450f74bd5d2a50ca68f926cc5d0e6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIManager
@@ -633,7 +633,7 @@ ScriptsOnlyBuild:
     className: Benchmark01_UGUI
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: d6de6a550b9f0b4e015198b4c65f3ede
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PincetHitBox
@@ -850,4 +850,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: "F:/\uC720\uB2C8\uD2F0\uC2E4\uD589\uD30C\uC77C/SuriveRoller/suvroll.apk"
+  playerPath: F:/UnityEXE/SuriveRoller/SurvRoll.apk

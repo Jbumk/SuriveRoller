@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            PlayTime = 10;
+            PlayTime = 120;
         }
         CatchBalls = 0;
         UIManager.instance.ReStart();
@@ -131,14 +131,10 @@ public class GameManager : MonoBehaviour
             UIManager.instance.SetResult(PlayTime);
         }
         else
-        {
-            Debug.Log("문제점1");
-            SaveManager.instance.SaveData.PincetRank.Add(CatchBalls);
-            Debug.Log("문제점2");
-            SaveManager.instance.SaveData.PincetRank.Sort();
-            Debug.Log("문제점3");
-            SaveManager.instance.SaveData.PincetRank.Reverse();
-            Debug.Log("문제점4");
+        {           
+            SaveManager.instance.SaveData.PincetRank.Add(CatchBalls);        
+            SaveManager.instance.SaveData.PincetRank.Sort();          
+            SaveManager.instance.SaveData.PincetRank.Reverse();         
             for (int i=0; i < SaveManager.instance.SaveData.PincetRank.Count; i++)
             {
                 if (CatchBalls == SaveManager.instance.SaveData.PincetRank[i])
@@ -153,8 +149,7 @@ public class GameManager : MonoBehaviour
                         UIManager.instance.SetRank(0);
                     }
                 }
-            }
-            Debug.Log("문제점5");
+            }         
             UIManager.instance.SetResult(CatchBalls);
         }
 
@@ -187,10 +182,10 @@ public class GameManager : MonoBehaviour
     }
     public void PlayerSpawn()
     {
-        SpawnVec.x = UnityEngine.Random.Range(-6.5f, 6.5f);
-        SpawnVec.y = 1f;
-        SpawnVec.z = UnityEngine.Random.Range(-2f, 11.5f);
-        Player.transform.position = SpawnVec;
+        SpawnVec.x = UnityEngine.Random.Range(-14.5f, -0.6f);
+        SpawnVec.y = 9f;
+        SpawnVec.z = UnityEngine.Random.Range(-14.5f, -0.6f);
+        Player.transform.localPosition = SpawnVec;
     }
     public void PlayerGravityOn()
     {

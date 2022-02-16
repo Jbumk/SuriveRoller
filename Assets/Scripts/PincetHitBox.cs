@@ -15,14 +15,12 @@ public class PincetHitBox : MonoBehaviour
         if (col.gameObject.CompareTag("Player"))
         {
             if (GameManager.instance.isBallMode())
-            {
-                Debug.Log("BallMode-잡힘");
+            {               
                 GameManager.instance.GameEnd();
             }
             else
-            {
-                //점수 추가 후 공 재생성?
-                Debug.Log("PincetMode-잡힘");
+            {               
+            
                 col.transform.SetParent(transform);
                 GameManager.instance.PlayerGravityOff();
                 Timer += Time.deltaTime;

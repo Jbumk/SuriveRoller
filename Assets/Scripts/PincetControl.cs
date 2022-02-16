@@ -29,6 +29,7 @@ public class PincetControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     private bool DownChk = false;
     private bool DoMove = false;
     private Vector3 OriginVec;
+    private Vector3 LocalVec;
 
     private bool isBall = true;
 
@@ -41,6 +42,7 @@ public class PincetControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     private void Awake()
     {
         OriginVec = Pincet.transform.position;
+        LocalVec = Pincet.transform.localPosition;
         PincetVec = OriginVec;
         MoveCode = Random.Range(0, MovePoint.Length);
     }
@@ -145,8 +147,8 @@ public class PincetControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             {
                 if (DownChk)
                 {                                      
-                    Pincet.transform.position = Vector3.MoveTowards(Pincet.transform.position, DownPoint, DownSpeed * Time.deltaTime);
-                    if (Vector3.Distance(Pincet.transform.position, DownPoint) <= 0.1)
+                    Pincet.transform.localPosition = Vector3.MoveTowards(Pincet.transform.localPosition, DownPoint, DownSpeed * Time.deltaTime *3);
+                    if (Vector3.Distance(Pincet.transform.localPosition,DownPoint) <= 0)
                     {
                         DownChk = false;
                     }
@@ -155,17 +157,17 @@ public class PincetControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 {
                     if (DoMove)
                     {
-                        PincetVec.x += inputDir.normalized.x * Time.deltaTime * MoveSpeed;
-                        PincetVec.z += inputDir.normalized.y * Time.deltaTime * MoveSpeed;
+                        PincetVec.x += inputDir.normalized.x * Time.deltaTime * MoveSpeed/15;
+                        PincetVec.z += inputDir.normalized.y * Time.deltaTime * MoveSpeed/15;
 
-                        PincetVec.x = Mathf.Clamp(PincetVec.x, -6f, 6f);
-                        PincetVec.z = Mathf.Clamp(PincetVec.z, -1f, 11f);
-                        Pincet.transform.position = PincetVec;
+                        PincetVec.x = Mathf.Clamp(PincetVec.x, -0.4f, 0.4f);
+                        PincetVec.z = Mathf.Clamp(PincetVec.z, -0.4f, 0.4f);
+                        Pincet.transform.localPosition = PincetVec;
                     }
                     else
                     {
-                        Pincet.transform.position = Vector3.MoveTowards(Pincet.transform.position, UpPoint, DownSpeed * Time.deltaTime);
-                        if (Vector3.Distance(Pincet.transform.position, UpPoint) <= 0.1)
+                        Pincet.transform.localPosition = Vector3.MoveTowards(Pincet.transform.localPosition, UpPoint, DownSpeed * Time.deltaTime*3);
+                        if (Vector3.Distance(Pincet.transform.localPosition, UpPoint) <= 0)
                         {
                             DoMove = true;
                             GameManager.instance.PincetPointOn();
@@ -184,7 +186,14 @@ public class PincetControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void ResetPincet()
     {
-        PincetVec = OriginVec;
+        if (isBall)
+        {
+            PincetVec = OriginVec;
+        }
+        else
+        {
+            PincetVec = LocalVec;
+        }
         Pincet.transform.position = OriginVec;
         BtnDown.color = Color.green;
         DoMove = true;
@@ -209,9 +218,9 @@ public class PincetControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             BtnDown.color = Color.red;
             DownChk = true;
             DoMove = false;
-            UpPoint = Pincet.transform.position;
+            UpPoint = Pincet.transform.localPosition;
             DownPoint = UpPoint;
-            DownPoint.y = UpPoint.y - 12.5f;
+            DownPoint.y = UpPoint.y - 25f;
         }
     }
 

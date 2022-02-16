@@ -23,7 +23,11 @@ public class Toys : MonoBehaviour
         {          
             transform.Translate(Vector3.down * 5f * Time.deltaTime);            
         }
-       
+
+        if (!GameManager.instance.isBallMode())
+        {
+            ObjPool.instance.ReturnToys(this);
+        }
 
         if (GameManager.instance.PlayTimechk()<=0)
         {
@@ -37,6 +41,7 @@ public class Toys : MonoBehaviour
                 rend = null;
             }
         }
+
 
     }
     private void OnTriggerEnter(Collider col)

@@ -16,7 +16,12 @@ public class FloorControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     private float Range = 20f;
     Vector2 inputDir;
 
+
     private bool isball = true;
+    private double TurnCoolTime=0.5;
+    private float TurnTimer = 0;
+    private Vector2 RandomVec;
+    //최소 0.5~ 3초
 
  
     public void OnBeginDrag(PointerEventData eventData)
@@ -79,6 +84,24 @@ public class FloorControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
                 FloorVec.x = Mathf.Clamp(FloorVec.x, -40f, 40f);
                 FloorVec.z = Mathf.Clamp(FloorVec.z, -40f, 40f);
                 Floor.transform.rotation = Quaternion.Euler(FloorVec);
+            }
+            else
+            {
+                TurnTimer += Time.deltaTime;
+                if (TurnTimer >= TurnCoolTime)
+                {
+                    RandomVec.x = Random.Range(-1f, 1f);
+                    RandomVec.y = Random.Range(-1f, 1f);
+                    TurnCoolTime = Random.Range(0.3f, 2.0f);
+                    TurnTimer = 0;
+                }
+                FloorVec.x -= RandomVec.x;
+                FloorVec.y -= RandomVec.y;
+
+                FloorVec.x = Mathf.Clamp(FloorVec.x, -40f, 40f);
+                FloorVec.y = Mathf.Clamp(FloorVec.y, -40f, 40f);
+                Floor.transform.rotation = Quaternion.Euler(FloorVec);
+                
             }
         }
 
