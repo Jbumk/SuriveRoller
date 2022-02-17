@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
 
     //Control
     private bool isStart = false;
-    private float StartCount = 3.1f;
+    private float StartCount = 3.01f;
     private float PlayTime = 0;
     private int CatchBalls = 0;
 
@@ -78,16 +78,18 @@ public class GameManager : MonoBehaviour
     public void Resume()
     {
         isStart = true;
-        StartCount = 3.1f;
+        StartCount = 3.01f;
         SoundManager.instance.BGMOn();
+        SoundManager.instance.CountDownOn();
     }
 
 
     public void GameReset()
     {
         isStart = true;
-        StartCount = 3.1f;
+        StartCount = 3.01f;
         SoundManager.instance.BGMOn();
+        SoundManager.instance.CountDownOn();
         Player.transform.position = PlayerOriginVec;
         Player.transform.SetParent(Stage.transform);
         FloorControl.FloorVec = Vector3.zero;
@@ -98,7 +100,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            PlayTime = 120;
+            PlayTime = 60;
         }
         CatchBalls = 0;
         UIManager.instance.ReStart();
@@ -109,6 +111,7 @@ public class GameManager : MonoBehaviour
     {
         SaveManager.instance.DataLoad();        
         SoundManager.instance.BGMStop();
+        SoundManager.instance.EndSoundOn();
         if (BallMode)
         {
             SaveManager.instance.SaveData.BallRank.Add(PlayTime);
@@ -133,8 +136,7 @@ public class GameManager : MonoBehaviour
         else
         {           
             SaveManager.instance.SaveData.PincetRank.Add(CatchBalls);        
-            SaveManager.instance.SaveData.PincetRank.Sort();          
-            SaveManager.instance.SaveData.PincetRank.Reverse();         
+            SaveManager.instance.SaveData.PincetRank.Sort();                
             for (int i=0; i < SaveManager.instance.SaveData.PincetRank.Count; i++)
             {
                 if (CatchBalls == SaveManager.instance.SaveData.PincetRank[i])

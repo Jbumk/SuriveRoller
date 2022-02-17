@@ -97,12 +97,15 @@ public class PincetControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             //BallMode일때 움직임
             if (isBall)
             {
+                //Pincet의 이동
                 if (DoMove)
                 {
-                    if (Vector3.Distance(Pincet.transform.position, MovePoint[MoveCode].transform.position) <= 0.1)
+                    if (Vector3.Distance(Pincet.transform.position, MovePoint[MoveCode].transform.position) <= 0)
                     {
+                        SoundManager.instance.PincetMoveOn();
                         DoMove = false;
                         DownChk = true;
+                        
                     }
                     else
                     {
@@ -111,6 +114,7 @@ public class PincetControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 }
                 else
                 {
+                    //Picnet이 내려갈때, 올라갈때
                     if (DownChk)
                     {
 
@@ -121,16 +125,17 @@ public class PincetControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                             rend.material.color = Color.red;
                         }
 
-                        if (Vector3.Distance(Pincet.transform.position, GrabPoint[MoveCode].transform.position) <= 0.1)
+                        if (Vector3.Distance(Pincet.transform.position, GrabPoint[MoveCode].transform.position) <= 0 && DownChk)
                         {
+                            SoundManager.instance.PincetMoveOn();
                             DownChk = false;
                         }
                     }
                     else
                     {
                         Pincet.transform.position = Vector3.MoveTowards(Pincet.transform.position, MovePoint[MoveCode].transform.position, DownSpeed * Time.deltaTime);
-                        if (Vector3.Distance(Pincet.transform.position, MovePoint[MoveCode].transform.position) <= 0.1)
-                        {
+                        if (Vector3.Distance(Pincet.transform.position, MovePoint[MoveCode].transform.position) <= 0)
+                        {                           
                             MoveCode = Random.Range(0, MovePoint.Length);
                             DoMove = true;
                         }
@@ -148,8 +153,10 @@ public class PincetControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 if (DownChk)
                 {                                      
                     Pincet.transform.localPosition = Vector3.MoveTowards(Pincet.transform.localPosition, DownPoint, DownSpeed * Time.deltaTime *3);
-                    if (Vector3.Distance(Pincet.transform.localPosition,DownPoint) <= 0)
+                    //최저점에 닿았을때 반환점
+                    if (Vector3.Distance(Pincet.transform.localPosition,DownPoint) <= 0 && DownChk)
                     {
+                        SoundManager.instance.PincetMoveOn();
                         DownChk = false;
                     }
                 }
@@ -214,6 +221,7 @@ public class PincetControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         if (BtnDown.color != Color.red && GameManager.instance.CountChk() <= 0)
         {
+            SoundManager.instance.PincetMoveOn();
             GameManager.instance.PincetPointOff();
             BtnDown.color = Color.red;
             DownChk = true;

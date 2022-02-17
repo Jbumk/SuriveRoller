@@ -152,6 +152,7 @@ public class UIManager : MonoBehaviour
     public void ToRank()
     {
         Time.timeScale = 1f;
+        SoundManager.instance.EndSoundStop();
         MenuRank.SetActive(true);
         BtnSelectRank.SetActive(true);
         
@@ -207,6 +208,7 @@ public class UIManager : MonoBehaviour
         MenuPuase.SetActive(true);
         Text_StartCount.gameObject.SetActive(false);
         SoundManager.instance.BGMStop();
+        SoundManager.instance.CountDownStop();
      
     }    
 
@@ -272,7 +274,8 @@ public class UIManager : MonoBehaviour
 
     public void ToHome()
     {
-        Time.timeScale = 1f;        
+        Time.timeScale = 1f;
+        SoundManager.instance.EndSoundStop();
         MenuMain.SetActive(true);
         MainStage.SetActive(false);
         MenuResult.SetActive(false);
@@ -347,6 +350,7 @@ public class UIManager : MonoBehaviour
     {
         SaveManager.instance.DataLoad();
         SaveManager.instance.SaveData.PincetRank.Sort();
+        SaveManager.instance.SaveData.PincetRank.Reverse();
         for (int i = 0; i < 10; i++)
         {
             RankTexts[i].text = string.Format("{0} 등", i + 1);
@@ -431,7 +435,7 @@ public class UIManager : MonoBehaviour
         Text_BallCount.text = string.Format("{0} 개", Balls);
     }
 
-    //이거 고치기
+
 
     //UI표시 ============================
 

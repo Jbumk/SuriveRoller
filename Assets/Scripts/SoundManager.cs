@@ -19,15 +19,20 @@ public class SoundManager : MonoBehaviour
 
     private static SoundManager m_inst;
 
+    [Header("BGMs")]
     public AudioSource BGM;
+    public AudioSource CountDown;
+    public AudioSource EndSound;
     public Slider Slide_BGM;
 
-    public AudioSource Effect;
+    [Header("Effect")]
+    public AudioSource GetPoint;
+    public AudioSource BtnClick;
+    public AudioSource PincetMove;
     public Slider Slide_Effect;
 
     private void Start()
-    {
-        
+    {        
         Slide_BGM.value = SaveManager.instance.SaveData.BGMVolum;
         Slide_Effect.value = SaveManager.instance.SaveData.EffectVolum;
     }
@@ -35,10 +40,19 @@ public class SoundManager : MonoBehaviour
     //Awake 에서 저장값 Load하고 소리값 조절
     private void Update()
     {
+        //BGMs 소리 조절
         BGM.volume = Slide_BGM.value;
-        Effect.volume = Slide_Effect.value;
+        CountDown.volume = Slide_BGM.value;
+        EndSound.volume = Slide_BGM.value;
+
+        //Effect의 소리조절
+        GetPoint.volume = Slide_Effect.value;
+        BtnClick.volume = Slide_Effect.value;
+        PincetMove.volume = Slide_Effect.value;
+        
     }
 
+    //BGM
     public void BGMOn()
     {
         BGM.Play();
@@ -46,5 +60,34 @@ public class SoundManager : MonoBehaviour
     public void BGMStop()
     {
         BGM.Stop();
+    }
+   
+    public void CountDownOn()
+    {
+        CountDown.Play();
+    }
+    public void CountDownStop()
+    {
+        CountDown.Stop();
+    }
+
+    public void EndSoundOn()
+    {
+        EndSound.Play();
+    }
+    public void EndSoundStop()
+    {
+        EndSound.Stop();
+    }
+
+    //Effect
+    public void GetPointOn()
+    {
+        GetPoint.Play();
+    }
+
+    public void PincetMoveOn()
+    {
+        PincetMove.Play();
     }
 }
