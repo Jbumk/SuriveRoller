@@ -10,10 +10,14 @@ public class Toys : MonoBehaviour
     private RaycastHit hit;
     private Renderer rend;
     private int laymask = 1 << 8;
+    private Color WarnColor = Color.red;
+    private Color NormalColor = Color.white;
 
     private void Awake()
     {
         rigid = GetComponent<Rigidbody>();
+        WarnColor.a = 0.4f;
+        NormalColor.a = 0.2f;
     
     }
 
@@ -37,7 +41,7 @@ public class Toys : MonoBehaviour
             ObjPool.instance.ReturnToys(this);
             if (rend != null)
             {
-                rend.material.color = Color.white;
+                rend.material.color = NormalColor;
                 rend = null;
             }
         }
@@ -49,11 +53,11 @@ public class Toys : MonoBehaviour
         //바닥에 닿았을때
         if (col.gameObject.CompareTag("Floor") && isfall)
         {
-            Debug.Log("바닥 닿음");
+           
             isfall = false;
             if (rend != null)
             {
-                rend.material.color = Color.white;
+                rend.material.color = NormalColor;
                 rend = null;
             }
         }
@@ -61,14 +65,14 @@ public class Toys : MonoBehaviour
         //집게에 잡혔을때
         if (col.gameObject.CompareTag("Pincet")&&!isfall)
         {
-            Debug.Log("잡힘");
+            
             transform.SetParent(col.transform);
         }
 
         //잡혀서 올라갔을때
         if (col.gameObject.CompareTag("GrabPoint") && !isfall)
         {
-            Debug.Log("삭제");
+           
             ToysControl.instance.ReturnTargetList(targetNum);
             targetNum = 0;
             isfall = true;
@@ -82,7 +86,7 @@ public class Toys : MonoBehaviour
         //플레이어 깔렸을때
         if (col.gameObject.CompareTag("Player") && isfall)
         {
-            Debug.Log("깔림");
+            
             GameManager.instance.GameEnd();
             isfall = true;
             ToysControl.instance.ReturnTargetList(targetNum);
@@ -90,7 +94,7 @@ public class Toys : MonoBehaviour
             ObjPool.instance.ReturnToys(this);
             if (rend != null)
             {
-                rend.material.color = Color.white;
+                rend.material.color = NormalColor;
                 rend = null;
             }
         }
@@ -101,7 +105,7 @@ public class Toys : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.up * -1, out hit, Mathf.Infinity, laymask))
         {
             rend = hit.transform.GetComponent<Renderer>();
-            rend.material.color = Color.red;
+            rend.material.color = WarnColor;
         }
         this.targetNum = targetNum;
     }

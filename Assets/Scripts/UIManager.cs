@@ -121,14 +121,12 @@ public class UIManager : MonoBehaviour
 
         //X,Y반전 설정 감지
         tglXReverse.onValueChanged.AddListener(delegate
-        {
-            Debug.Log("X값 변동");
+        {          
             XReverse *= -1;
             
         });
         tglYReverse.onValueChanged.AddListener(delegate
-        {
-            Debug.Log("Y값 변동");
+        {         
             YReverse *= -1;
         });
 
@@ -223,16 +221,14 @@ public class UIManager : MonoBehaviour
         MenuSet.SetActive(false);
         //컨트롤 방법 저장
         if (tglJoyStick.isOn)
-        {
-            Debug.Log("조이스틱 이용");
+        {           
             MethodPad = true;
             JoyPadView.SetActive(true);
             SaveManager.instance.SaveData.JoyStickControl = true;
         }
 
         if(tglHorizontal.isOn)
-        {
-            Debug.Log("수평값 이용");
+        {            
             MethodPad = false;
             JoyPadView.SetActive(false);
             SaveManager.instance.SaveData.JoyStickControl = false;

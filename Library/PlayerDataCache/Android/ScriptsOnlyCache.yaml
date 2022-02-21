@@ -19,7 +19,6 @@ ScriptsOnlyBuild:
     - TMPro.TMP_Settings
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
-    - TMPro.TextMeshPro
     - TMPro.TextMeshProUGUI
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
@@ -83,68 +82,64 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11810}
+      Script: {instanceID: 11814}
     - Class: 114
-      Script: {instanceID: 11812}
+      Script: {instanceID: 11816}
     - Class: 114
-      Script: {instanceID: 11834}
+      Script: {instanceID: 11838}
     - Class: 114
-      Script: {instanceID: 11860}
+      Script: {instanceID: 11864}
     - Class: 114
-      Script: {instanceID: 11954}
+      Script: {instanceID: 11958}
     - Class: 114
-      Script: {instanceID: 12002}
+      Script: {instanceID: 12006}
     - Class: 114
-      Script: {instanceID: 12008}
+      Script: {instanceID: 12012}
     - Class: 114
-      Script: {instanceID: 12022}
+      Script: {instanceID: 12026}
     - Class: 114
-      Script: {instanceID: 12398}
+      Script: {instanceID: 12402}
     - Class: 114
-      Script: {instanceID: 12474}
+      Script: {instanceID: 12478}
     - Class: 114
-      Script: {instanceID: 12502}
+      Script: {instanceID: 12506}
     - Class: 114
-      Script: {instanceID: 12536}
+      Script: {instanceID: 12540}
     - Class: 114
-      Script: {instanceID: 12634}
+      Script: {instanceID: 12638}
     - Class: 114
-      Script: {instanceID: 12640}
+      Script: {instanceID: 12644}
     - Class: 114
-      Script: {instanceID: 12738}
+      Script: {instanceID: 12742}
     - Class: 114
-      Script: {instanceID: 13192}
+      Script: {instanceID: 13196}
     - Class: 114
-      Script: {instanceID: 13228}
+      Script: {instanceID: 13232}
     - Class: 114
-      Script: {instanceID: 13246}
+      Script: {instanceID: 13250}
     - Class: 114
-      Script: {instanceID: 13468}
+      Script: {instanceID: 13472}
     - Class: 114
-      Script: {instanceID: 13518}
+      Script: {instanceID: 13522}
     - Class: 114
-      Script: {instanceID: 13538}
+      Script: {instanceID: 13542}
     - Class: 114
-      Script: {instanceID: 13722}
+      Script: {instanceID: 13726}
     - Class: 114
-      Script: {instanceID: 13760}
+      Script: {instanceID: 13764}
     - Class: 114
-      Script: {instanceID: 13832}
+      Script: {instanceID: 13844}
     - Class: 114
-      Script: {instanceID: 13840}
+      Script: {instanceID: 13952}
     - Class: 114
-      Script: {instanceID: 13948}
+      Script: {instanceID: 13970}
     - Class: 114
-      Script: {instanceID: 13966}
+      Script: {instanceID: 13988}
     - Class: 114
-      Script: {instanceID: 13984}
-    - Class: 114
-      Script: {instanceID: 14008}
+      Script: {instanceID: 14012}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
-      Script: {instanceID: 0}
-    - Class: 134
       Script: {instanceID: 0}
     - Class: 135
       Script: {instanceID: 0}
@@ -429,7 +424,7 @@ ScriptsOnlyBuild:
     className: Benchmark01
   - hash:
       serializedVersion: 2
-      Hash: 92a1d284df495d94ecd2678b1ad69d31
+      Hash: 6407ad47b47b90a86624da383911c884
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SoundManager

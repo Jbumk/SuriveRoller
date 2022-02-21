@@ -53,13 +53,13 @@ public class SaveManager : MonoBehaviour
         string filePath = Application.persistentDataPath + SaveDataFileName;
         if (File.Exists(filePath))
         {
-            Debug.Log("로드 성공!");
+           
             string FromJsonData = File.ReadAllText(filePath);
             _saveData = JsonUtility.FromJson<SaveData>(FromJsonData);
         }
         else
         {
-            Debug.Log("새 세이브파일 생성");
+         
             _saveData = new SaveData();
         }
     }
@@ -69,7 +69,7 @@ public class SaveManager : MonoBehaviour
         string ToJsonData = JsonUtility.ToJson(SaveData);
         string filePath = Application.persistentDataPath + SaveDataFileName;
         File.WriteAllText(filePath, ToJsonData);
-        Debug.Log("저장 성공!");
+
     }
 
     private void OnApplicationQuit()

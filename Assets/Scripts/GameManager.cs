@@ -91,6 +91,7 @@ public class GameManager : MonoBehaviour
         SoundManager.instance.BGMOn();
         SoundManager.instance.CountDownOn();
         Player.transform.position = PlayerOriginVec;
+        rigid.useGravity = true;
         Player.transform.SetParent(Stage.transform);
         FloorControl.FloorVec = Vector3.zero;
         Stage.transform.rotation = Quaternion.Euler(Vector3.zero);
