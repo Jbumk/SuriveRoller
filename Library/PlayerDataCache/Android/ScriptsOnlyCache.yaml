@@ -82,61 +82,61 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11814}
-    - Class: 114
       Script: {instanceID: 11816}
     - Class: 114
-      Script: {instanceID: 11838}
+      Script: {instanceID: 11818}
     - Class: 114
-      Script: {instanceID: 11864}
+      Script: {instanceID: 11840}
     - Class: 114
-      Script: {instanceID: 11958}
+      Script: {instanceID: 11866}
     - Class: 114
-      Script: {instanceID: 12006}
+      Script: {instanceID: 11960}
     - Class: 114
-      Script: {instanceID: 12012}
+      Script: {instanceID: 12008}
     - Class: 114
-      Script: {instanceID: 12026}
+      Script: {instanceID: 12014}
     - Class: 114
-      Script: {instanceID: 12402}
+      Script: {instanceID: 12028}
     - Class: 114
-      Script: {instanceID: 12478}
+      Script: {instanceID: 12404}
     - Class: 114
-      Script: {instanceID: 12506}
+      Script: {instanceID: 12480}
     - Class: 114
-      Script: {instanceID: 12540}
+      Script: {instanceID: 12508}
     - Class: 114
-      Script: {instanceID: 12638}
+      Script: {instanceID: 12542}
     - Class: 114
-      Script: {instanceID: 12644}
+      Script: {instanceID: 12640}
     - Class: 114
-      Script: {instanceID: 12742}
+      Script: {instanceID: 12646}
     - Class: 114
-      Script: {instanceID: 13196}
+      Script: {instanceID: 12744}
     - Class: 114
-      Script: {instanceID: 13232}
+      Script: {instanceID: 13198}
     - Class: 114
-      Script: {instanceID: 13250}
+      Script: {instanceID: 13234}
     - Class: 114
-      Script: {instanceID: 13472}
+      Script: {instanceID: 13252}
     - Class: 114
-      Script: {instanceID: 13522}
+      Script: {instanceID: 13474}
     - Class: 114
-      Script: {instanceID: 13542}
+      Script: {instanceID: 13524}
     - Class: 114
-      Script: {instanceID: 13726}
+      Script: {instanceID: 13544}
     - Class: 114
-      Script: {instanceID: 13764}
+      Script: {instanceID: 13728}
     - Class: 114
-      Script: {instanceID: 13844}
+      Script: {instanceID: 13766}
     - Class: 114
-      Script: {instanceID: 13952}
+      Script: {instanceID: 13846}
     - Class: 114
-      Script: {instanceID: 13970}
+      Script: {instanceID: 13954}
     - Class: 114
-      Script: {instanceID: 13988}
+      Script: {instanceID: 13972}
     - Class: 114
-      Script: {instanceID: 14012}
+      Script: {instanceID: 13990}
+    - Class: 114
+      Script: {instanceID: 14014}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -845,4 +845,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: F:/UnityEXE/SuriveRoller/SurvRoll.apk
+  playerPath: F:/UnityEXE/SuriveClaw/SurviveClaw.apk

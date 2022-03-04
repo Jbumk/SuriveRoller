@@ -9,7 +9,7 @@ public class ObjPool : MonoBehaviour
     public static ObjPool instance;
     public GameObject ToysPrefab;
     public GameObject Floor;
-    private int ToysCount=10;
+    private int ToysCount=25;
 
     Queue<Toys> ToysObjPool = new Queue<Toys>();
 
